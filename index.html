@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziraat Bankası Uzman Yardımcılığı İngilizce Hazırlık Platformu</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo-section">
+        <div class="logo-badge">
+          <span>ZB</span>
+        </div>
+        <div class="title-section">
+          <h1>Ziraat Bankası Uzman Yardımcılığı</h1>
+          <p>Bilişim, Bilgisayar ve Yapay Zekâ Grubu &bull; İngilizce Sınav Platformu</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <div class="exam-pill pulse-green">
+          <span class="pulse-dot"></span>
+          <span>Sınav Kılavuzu:</span>
+          <strong>AUZEF 2026</strong>
+        </div>
+        <div class="exam-pill">
+          <span>⚖️ İngilizce Barajı:</span>
+          <strong style="color:#fca5a5;">%60 (24/40 Doğru)</strong>
+        </div>
+        <div class="exam-pill" style="background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.35);">
+          <span>✓</span>
+          <strong>Yanlış Doğruyu Götürmez</strong>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <button class="nav-tab active" data-tab="dashboard">
+        <span class="tab-icon">📊</span>
+        <span>Genel Bakış</span>
+      </button>
+      <button class="nav-tab" data-tab="mock-exams">
+        <span class="tab-icon">⏱️</span>
+        <span>Deneme Sınavları (40 Soru)</span>
+      </button>
+      <button class="nav-tab" data-tab="lessons">
+        <span class="tab-icon">📖</span>
+        <span>Konu Anlatımı</span>
+      </button>
+      <button class="nav-tab" data-tab="category-drills">
+        <span class="tab-icon">🎯</span>
+        <span>Kategori Pratiği</span>
+      </button>
+      <button class="nav-tab" data-tab="flashcards">
+        <span class="tab-icon">🗂️</span>
+        <span>Kelime Kartları</span>
+      </button>
+      <button class="nav-tab" data-tab="tactics">
+        <span class="tab-icon">📘</span>
+        <span>Sınav Taktikleri</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="tab-dashboard" class="tab-content active">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-text">
+          <div class="hero-badge-tag">
+            <span>✨</span> Bilişim & IT Grubu Özel Hazırlık
+          </div>
+          <h2>Hedef: %60 Barajını Aşmak</h2>
+          <p>
+            Ziraat Bankası Uzman Yardımcılığı yazılı sınavında <strong>40 soruluk İngilizce testi</strong> ayrı bir barajdır. En az <strong>24 doğru</strong> yapamayan aday doğrudan elenir. Gerçek AUZEF sınav standartlarında hazırlanmış simülatör ve konu özetleriyle hemen çalışmaya başlayın.
+          </p>
+          <div style="margin-top: 1.5rem; display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="switchTab('mock-exams'); startMockExam('mock1');">
+              🚀 1. Deneme Sınavını Başlat
+            </button>
+            <button class="btn btn-secondary" onclick="switchTab('lessons');">
+              📖 Konu Anlatımlarını İncele
+            </button>
+            <button class="btn btn-secondary" onclick="switchTab('flashcards');">
+              🗂️ Kelime Kartlarını Çalış
+            </button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-box">
+            <div class="hero-stat-val" id="dash-exams-count">0</div>
+            <div class="hero-stat-label">Tamamlanan Deneme</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-val" id="dash-pass-rate">0%</div>
+            <div class="hero-stat-label">Baraj Geçme Oranı</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Quick Metrics Grid -->
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">📈 Son Deneme Durumu</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 0.5rem 0;" id="dash-last-score">
+            Henüz Çözülmedi
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            İngilizce barajı: 24 doğru / 40 soru (%60)
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-title">🗂️ Öğrenilen Kelimeler</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--accent); margin: 0.5rem 0;" id="dash-words-count">
+            0 / 60
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Bankacılık, Bilişim & Phrasal Verbs kartları
+          </p>
+        </div>
+
+        <div class="card" onclick="switchTab('lessons')" style="cursor: pointer;">
+          <div class="card-title">📖 Konu Anlatımı</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: #7c3aed; margin: 0.5rem 0;">
+            9 Modül
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Tüm kritik gramer, formüller & tuzaklar
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Exam Structure Overview -->
+      <div class="card" style="margin-top: 1.5rem;">
+        <div class="card-title">📋 40 Soruluk İngilizce Testi Konu Dağılımı</div>
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div>
+            <ul style="line-height: 2; padding-left: 1.25rem; font-size: 0.95rem;">
+              <li><strong>Kelime Bilgisi (Vocabulary):</strong> 6 - 8 Soru (Finans, Bilişim, Siber Güvenlik, Akademik)</li>
+              <li><strong>Phrasal Verbs & Edatlar:</strong> 3 - 5 Soru (account for, stem from, carry out vb.)</li>
+              <li><strong>Dilbilgisi (Grammar):</strong> 8 - 10 Soru (Tenses, Conditionals, Modals, Reductions, Inversion)</li>
+              <li><strong>Bağlaçlar (Conjunctions):</strong> 5 - 7 Soru (Although, due to, unless, whereas vb.)</li>
+            </ul>
+          </div>
+          <div>
+            <ul style="line-height: 2; padding-left: 1.25rem; font-size: 0.95rem;">
+              <li><strong>Cloze Test:</strong> 4 - 5 Soru (Paragraf içi boşluk tamamlama)</li>
+              <li><strong>Cümle Tamamlama:</strong> 4 - 5 Soru (Sentence Completion)</li>
+              <li><strong>Çeviri (Translation):</strong> 3 - 4 Soru (İngilizce ➔ Türkçe, Türkçe ➔ İngilizce)</li>
+              <li><strong>Okuduğunu Anlama (Reading):</strong> 8 - 10 Soru (Teknoloji, FinTech, Yapay Zeka, Ekonomi metinleri)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: DENEME SINAVLARI (MOCK EXAMS) -->
+    <section id="tab-mock-exams" class="tab-content">
+      
+      <!-- Selection View -->
+      <div id="mock-selection-view">
+        <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">Ziraat Uzman Yardımcılığı 40 Soruluk Tam Denemeler</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Gerçek sınav formatı, 45 dakikalık süre sayacı, %60 baraj analizi ve detaylı Türkçe açıklamalar.
+        </p>
+
+        <div class="grid-3">
+          <!-- Deneme 1 -->
+          <div class="card mock-exam-card">
+            <div>
+              <h3>Deneme 1: Standart Format</h3>
+              <p>Klasik Ziraat Bankası Uzman Yardımcılığı sınav ağırlığı. Dengeli finans ve genel İngilizce soruları.</p>
+              <div class="exam-meta">
+                <span>📝 40 Soru</span>
+                <span>⏱️ 45 Dakika</span>
+                <span>🎯 Baraj: 24 Doğru</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="startMockExam('mock1')">
+              Sınavı Başlat
+            </button>
+          </div>
+
+          <!-- Deneme 2 -->
+          <div class="card mock-exam-card" style="border-left-color: #2563eb;">
+            <div>
+              <h3>Deneme 2: Bilişim & FinTech Odaklı</h3>
+              <p>Mühendislik ve Bilişim adayları için özel: Algoritmalar, Siber Güvenlik, Bulut ve AI metinleri.</p>
+              <div class="exam-meta">
+                <span>📝 40 Soru</span>
+                <span>⏱️ 45 Dakika</span>
+                <span>🎯 Baraj: 24 Doğru</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" style="background:#2563eb;" onclick="startMockExam('mock2')">
+              Sınavı Başlat
+            </button>
+          </div>
+
+          <!-- Deneme 3 -->
+          <div class="card mock-exam-card" style="border-left-color: #7c3aed;">
+            <div>
+              <h3>Deneme 3: İleri Düzey Çeldiricili</h3>
+              <p>Yüksek zorluk seviyesi: Devrik yapılar, karmaşık bağlaçlar ve çeldirici seçenekler içeren deneme.</p>
+              <div class="exam-meta">
+                <span>📝 40 Soru</span>
+                <span>⏱️ 45 Dakika</span>
+                <span>🎯 Baraj: 24 Doğru</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" style="background:#7c3aed;" onclick="startMockExam('mock3')">
+              Sınavı Başlat
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Exam View -->
+      <div id="mock-active-view" style="display: none;">
+        <div class="exam-header">
+          <div>
+            <h3 id="exam-active-title" style="color: var(--primary);">Deneme Sınavı</h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Ziraat Bankası Uzman Yrd. Formatı</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="timer-box">
+              <span>⏳ Kalan Süre:</span>
+              <strong id="exam-timer">45:00</strong>
+            </div>
+            <button class="btn btn-success" onclick="confirmSubmitExam()">
+              ✓ Sınavı Bitir
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="exitExam()">
+              Çıkış
+            </button>
+          </div>
+        </div>
+
+        <!-- 40 Question Palette -->
+        <div class="question-nav-grid" id="question-palette"></div>
+
+        <!-- Current Question Display -->
+        <div id="active-question-card" class="question-card"></div>
+      </div>
+
+      <!-- Scorecard View -->
+      <div id="mock-scorecard-view" style="display: none;">
+        <div class="scorecard">
+          <h2 style="color: var(--primary); margin-bottom: 0.5rem;" id="score-exam-title">Sınav Sonucu</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.5rem;">İstanbul Üniversitesi / Ziraat Bankası Değerlendirme Raporu</p>
+
+          <div id="score-threshold-badge" class="threshold-badge pass">
+            🎉 TEBRİKLER! %60 BARAJINI GEÇTİNİZ
+          </div>
+
+          <div class="score-stats-grid">
+            <div class="score-stat-box">
+              <div class="score-stat-num" id="score-correct" style="color: var(--success);">0</div>
+              <div class="score-stat-label">Doğru</div>
+            </div>
+            <div class="score-stat-box">
+              <div class="score-stat-num" id="score-wrong" style="color: var(--danger);">0</div>
+              <div class="score-stat-label">Yanlış</div>
+            </div>
+            <div class="score-stat-box">
+              <div class="score-stat-num" id="score-empty" style="color: var(--text-muted);">0</div>
+              <div class="score-stat-label">Boş</div>
+            </div>
+            <div class="score-stat-box">
+              <div class="score-stat-num" id="score-pct" style="color: var(--accent);">%0</div>
+              <div class="score-stat-label">Başarı Yüzdesi</div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 1.25rem; border-radius: 8px; margin: 1.5rem 0; text-align: left; font-size: 0.95rem; border: 1px solid var(--border-color);">
+            <strong>📌 Kılavuz Notu:</strong> Yazılı sınavda İngilizce testi baraj niteliğinde olup en az %60 (24 doğru) alan adaylar başarılı kabul edilir. Yanlışlar doğruyu götürmez. Hatalı ve boş bıraktığınız sorular otomatik olarak <strong>Hata Defterinize</strong> eklendi.
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="reviewExamAnswers()">
+              🔍 Soruları ve Açıklamaları İncele
+            </button>
+            <button class="btn btn-secondary" onclick="exitExam()">
+              📋 Deneme Listesine Dön
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB: KONU ANLATIMI (LESSONS) -->
+    <section id="tab-lessons" class="tab-content">
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.25rem;">Ziraat Bankası İngilizce Konu Anlatımı</h2>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">Sınavda en çok soru getiren kritik gramer kuralları, formüller ve bankacılık/bilişim örnekleri.</p>
+        </div>
+        <div>
+          <input type="text" id="lesson-search-input" placeholder="Kural veya bağlaç ara (örn: by the time, lest)..." oninput="filterLessons(this.value)" style="padding: 0.55rem 1rem; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; outline: none; width: 300px;">
+        </div>
+      </div>
+
+      <div class="lessons-layout">
+        <!-- Sidebar Navigation -->
+        <div class="lessons-sidebar" id="lessons-nav-list"></div>
+
+        <!-- Detail Content -->
+        <div class="lesson-detail-card" id="lesson-detail-card"></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: KATEGORİ PRATİĞİ (CATEGORY DRILLS) -->
+    <section id="tab-category-drills" class="tab-content">
+
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">Kategori Bazlı Hızlı Alıştırmalar</h2>
+        <p style="color: var(--text-muted);">Seçeneklere tıkladığınız anda anında doğru/yanlış ve Türkçe çözüm açıklaması görüntülenir.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 1.5rem; padding-bottom: 4px;">
+        <button class="btn btn-primary cat-tab-btn" data-drill="phrasal" onclick="loadCategoryDrill('phrasal')">
+          Phrasal Verbs
+        </button>
+        <button class="btn btn-secondary cat-tab-btn" data-drill="conjunctions" onclick="loadCategoryDrill('conjunctions')">
+          Bağlaçlar & Transitions
+        </button>
+        <button class="btn btn-secondary cat-tab-btn" data-drill="grammar" onclick="loadCategoryDrill('grammar')">
+          Gramer & Devrik Yapılar
+        </button>
+        <button class="btn btn-secondary cat-tab-btn" data-drill="vocabulary" onclick="loadCategoryDrill('vocabulary')">
+          Bilişim & Finans Kelimeleri
+        </button>
+      </div>
+
+      <!-- Question Card for Drill -->
+      <div id="category-drill-container"></div>
+    </section>
+
+    <!-- TAB 4: AKILLI KELİME KARTLARI (FLASHCARDS) -->
+    <section id="tab-flashcards" class="tab-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.25rem;">Ziraat Bankası & Bilişim Kelime Kartları</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Sınavlarda en çok sorulan finans, bankacılık ve teknoloji kelimeleri (Sesli okuma destekli).</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <input type="text" placeholder="Kelime veya anlam ara..." oninput="searchVocab(this.value)" style="padding: 0.55rem 1rem; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; outline: none; width: 220px;">
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;">
+        <button class="btn btn-primary vocab-filter-btn" data-cat="All" onclick="filterVocab('All')">Tümü</button>
+        <button class="btn btn-secondary vocab-filter-btn" data-cat="Banking" onclick="filterVocab('Banking')">Bankacılık & Finans</button>
+        <button class="btn btn-secondary vocab-filter-btn" data-cat="IT" onclick="filterVocab('IT')">Bilişim & Siber Güvenlik</button>
+        <button class="btn btn-secondary vocab-filter-btn" data-cat="Phrasal" onclick="filterVocab('Phrasal')">Phrasal Verbs</button>
+        <button class="btn btn-secondary vocab-filter-btn" data-cat="Academic" onclick="filterVocab('Academic')">Akademik Terimler</button>
+      </div>
+
+      <!-- Flashcard Display -->
+      <div class="flashcard-wrapper">
+        <div id="flashcard-display"></div>
+
+        <div class="flashcard-controls" style="margin-top: 1.5rem;">
+          <button class="btn btn-secondary" onclick="prevFlashcard()">
+            ⬅ Önceki Kart
+          </button>
+          <button id="btn-vocab-learn" class="btn btn-secondary" onclick="toggleCurrentVocabLearned()">
+            ☆ Öğrendim Olarak İşaretle
+          </button>
+          <button class="btn btn-primary" onclick="nextFlashcard()">
+            Sonraki Kart ➡
+          </button>
+        </div>
+        <div style="text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.88rem; font-weight:600;" id="vocab-card-count">
+          1 / 60
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: SINAV TAKTİKLERİ & GRAMER (TACTICS) -->
+    <section id="tab-tactics" class="tab-content">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;">Ziraat Bankası İngilizce Sınav Taktikleri & Altın Kurallar</h2>
+        <p style="color: var(--text-muted);">Sınavda hız kazandıran, çeldiricileri anında eleten ve %60 barajını geçmenizi sağlayan pratik yöntemler.</p>
+      </div>
+
+      <div id="tactics-list"></div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer>
+
+    <p>Ziraat Bankası Uzman Yardımcılığı Sınavı Hazırlık Platformu (Bilişim & IT Grubu) &bull; Yerel Çalışma Uygulaması</p>
+    <p style="margin-top: 4px; font-size: 0.78rem; opacity: 0.75;">Tüm veriler yerel tarayıcınızda (localStorage) saklanır, internet bağlantısı gerektirmez.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="questions.js"></script>
+  <script src="vocabulary.js"></script>
+  <script src="tactics.js"></script>
+  <script src="lessons.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
