@@ -297,11 +297,11 @@ function renderCurrentQuestion() {
 
     ${explanationHtml}
 
-    <div style="display:flex; justify-content:space-between; margin-top:2rem; align-items:center;">
+    <div class="question-footer-nav">
       <button class="btn btn-secondary" onclick="prevQuestion()" ${APP_STATE.currentQuestionIndex === 0 ? 'disabled' : ''}>
         ⬅ Önceki Soru
       </button>
-      <span style="font-size:0.88rem; color:var(--text-muted); font-weight:500;">
+      <span class="nav-hint">
         ${APP_STATE.isExamSubmitted ? 'İnceleme Modu' : 'Cevaplamak için seçeneğe tıklayın'}
       </span>
       <button class="btn btn-primary" onclick="nextQuestion()" ${APP_STATE.currentQuestionIndex === totalQ - 1 ? 'disabled' : ''}>
@@ -693,8 +693,9 @@ function renderCategoryDrill() {
       <div class="options-list">${optionsHtml}</div>
       <div id="drill-explanation-container"></div>
 
-      <div style="display:flex; justify-content:space-between; margin-top:1.5rem;">
+      <div class="question-footer-nav">
         <button class="btn btn-secondary" onclick="prevDrill()" ${currentDrillIndex === 0 ? 'disabled' : ''}>⬅ Önceki</button>
+        <span class="nav-hint">Doğru/yanlış anında gösterilir</span>
         <button class="btn btn-primary" onclick="nextDrill()" ${currentDrillIndex === currentDrillList.length - 1 ? 'disabled' : ''}>Sonraki ➡</button>
       </div>
     </div>

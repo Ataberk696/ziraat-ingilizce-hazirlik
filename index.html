@@ -236,7 +236,7 @@
             <span style="font-size: 0.85rem; color: var(--text-muted);">Ziraat Bankası Uzman Yrd. Formatı</span>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 15px;">
+          <div class="exam-header-actions">
             <div class="timer-box">
               <span>⏳ Kalan Süre:</span>
               <strong id="exam-timer">45:00</strong>
@@ -290,7 +290,7 @@
             <strong>📌 Kılavuz Notu:</strong> Yazılı sınavda İngilizce testi baraj niteliğinde olup en az %60 (24 doğru) alan adaylar başarılı kabul edilir. Yanlışlar doğruyu götürmez. Çözüm açıklamalarını inceleme ekranından detaylıca görebilirsiniz.
           </div>
 
-          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+          <div class="scorecard-buttons">
             <button class="btn btn-primary" onclick="reviewExamAnswers()">
               🔍 Soruları ve Açıklamaları İncele
             </button>
@@ -305,13 +305,13 @@
 
     <!-- TAB: KONU ANLATIMI (LESSONS) -->
     <section id="tab-lessons" class="tab-content">
-      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div class="section-header-bar">
         <div>
           <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.25rem;">Ziraat Bankası İngilizce Konu Anlatımı</h2>
           <p style="color: var(--text-muted); font-size: 0.92rem;">Sınavda en çok soru getiren kritik gramer kuralları, formüller ve bankacılık/bilişim örnekleri.</p>
         </div>
-        <div>
-          <input type="text" id="lesson-search-input" placeholder="Kural veya bağlaç ara (örn: by the time, lest)..." oninput="filterLessons(this.value)" style="padding: 0.55rem 1rem; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; outline: none; width: 300px;">
+        <div class="search-input-wrap">
+          <input type="text" id="lesson-search-input" class="search-input" placeholder="Kural veya bağlaç ara (örn: by the time, lest)..." oninput="filterLessons(this.value)">
         </div>
       </div>
 
@@ -333,7 +333,7 @@
       </div>
 
       <!-- Category Filter Tabs -->
-      <div style="display: flex; gap: 8px; overflow-x: auto; margin-bottom: 1.5rem; padding-bottom: 4px;">
+      <div class="filter-pills-row">
         <button class="btn btn-primary cat-tab-btn" data-drill="phrasal" onclick="loadCategoryDrill('phrasal')">
           Phrasal Verbs
         </button>
@@ -354,19 +354,19 @@
 
     <!-- TAB 4: AKILLI KELİME KARTLARI (FLASHCARDS) -->
     <section id="tab-flashcards" class="tab-content">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+      <div class="section-header-bar">
         <div>
           <h2 style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.25rem;">Ziraat Bankası & Bilişim Kelime Kartları</h2>
           <p style="color: var(--text-muted); font-size: 0.9rem;">Sınavlarda en çok sorulan finans, bankacılık ve teknoloji kelimeleri (Sesli okuma destekli).</p>
         </div>
 
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <input type="text" placeholder="Kelime veya anlam ara..." oninput="searchVocab(this.value)" style="padding: 0.55rem 1rem; border: 1.5px solid var(--border-color); border-radius: 8px; font-size: 0.9rem; outline: none; width: 220px;">
+        <div class="search-input-wrap">
+          <input type="text" class="search-input" placeholder="Kelime veya anlam ara..." oninput="searchVocab(this.value)">
         </div>
       </div>
 
       <!-- Filter Buttons -->
-      <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;">
+      <div class="filter-pills-row">
         <button class="btn btn-primary vocab-filter-btn" data-cat="All" onclick="filterVocab('All')">Tümü</button>
         <button class="btn btn-secondary vocab-filter-btn" data-cat="Banking" onclick="filterVocab('Banking')">Bankacılık & Finans</button>
         <button class="btn btn-secondary vocab-filter-btn" data-cat="IT" onclick="filterVocab('IT')">Bilişim & Siber Güvenlik</button>
@@ -378,7 +378,7 @@
       <div class="flashcard-wrapper">
         <div id="flashcard-display"></div>
 
-        <div class="flashcard-controls" style="margin-top: 1.5rem;">
+        <div class="flashcard-controls">
           <button class="btn btn-secondary" onclick="prevFlashcard()">
             ⬅ Önceki Kart
           </button>
